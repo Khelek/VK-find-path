@@ -21,8 +21,7 @@ get_friends_id(Id) ->
 	Method = "friends.get",
 	Params = "uid=" ++ integer_to_list(Id),
 	_Html_response = make_request(Method, Params),
-	f:write(_Html_response, integer_to_list(Id) ++ ".txt"),
-	_Html_response.
+	f:write(_Html_response, integer_to_list(Id) ++ ".txt").
 
 get_fr_by_id_list(Id_list) ->
 	[spawn( fun()->get_friends_id(Temp_id) end )||Temp_id <- Id_list].
